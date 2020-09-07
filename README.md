@@ -13,7 +13,7 @@ Contribuyentes:
 
 David Emanuel Sandoval - <davidemanuelsandoval @ gmail . com> - 
 Ariel Carabajal - <arieltuz@gmail.com>
-Débora Ortega -
+Débora Ortega - <debora.e.ortega.mr@gmail.com>
 Rosana Palavecino - 
 Elias Bogarin - 
 Julio Domingo Ocampo - 
