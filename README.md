@@ -10,6 +10,7 @@ Es un proyecto hecho de manera colaborativa por un grupo de estudiantes del Info
 
 Contribuyentes:
 ---------------
+
 David Emanuel Sandoval - <davidemanuelsandoval @ gmail . com> - 
 Ariel Carabajal - <arieltuz@gmail.com>
 Débora Ortega -
