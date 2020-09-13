@@ -1,0 +1,27 @@
+{% load static %}
+
+<nav class="nav-main">
+    <!-- Brand -->
+    <img src="{% static 'img/canvas.png' %}" alt="Atucasa" class="nav-brand">
+    <!-- Nav izquierda -->
+    <ul class="nav-menu">
+      <li>
+        <a href="{% url 'login' %}">Ingresa</a>
+      </li>
+      <li>
+        <a href="#">Contactenos</a>
+      </li>
+      <li>
+        <a href="#">Ayuda</a>
+      </li>
+    </ul>
+
+    <!-- Barra navegadora derecha-->
+    <ul class="nav-menu-right">
+      <li>
+        <a href="#">
+          <i class="fas fa-search"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
