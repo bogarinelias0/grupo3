@@ -23,7 +23,12 @@
     <!-- Barra navegadora derecha-->
     <ul class="nav-menu-right">
       <li>
-        <a href="#">
+        {% if user.is_authenticated %}
+        <a href="{% url 'perfil_details' pk=user.id %}">
+          {%else%}
+          <a href="#"></a>
+        {% endif %}
+
           <i class="fas fa-search"></i>
         </a>
       </li>

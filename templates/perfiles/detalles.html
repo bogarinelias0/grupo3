@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Usuario {{ user.username }} - Detalles{% endblock %}
+
+{% block content %}
+<p>Nombre: </p><span>{{ object.user.username }}</span>
+<p>Email: </p><span>{{ object.user.email }}</span>
+<p>Foto de Perfil: </p><img src="{{ object.foto.url }}" alt="Foto de Perfil" srcset="">
+{% endblock %}

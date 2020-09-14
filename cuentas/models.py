@@ -21,14 +21,14 @@ class Domicilio(models.Model):
         return self.calle + ' ' + (str(self.numero_calle) if self.numero_calle else '')
 
 
-def get_image_path(instancia, filename):
-    """Construye la ruta donde se van a guardar las imágenes de perfil"""
-    instancia_id = instancia.id
-    if instancia_id is None:
-        instancia_id = Usuario.objects.order_by("id").last().id + 1
-    path = os.path.join("images/users/", str(instancia_id), "profile", filename)
-    print(path)
-    return path
+# def get_image_path(instancia, filename):
+#     """Construye la ruta donde se van a guardar las imágenes de perfil"""
+#     instancia_id = instancia.id
+#     if instancia_id is None:
+#         instancia_id = Usuario.objects.order_by("id").last().id + 1
+#     path = os.path.join("images/users/", str(instancia_id), "profile", filename)
+#     print(path)
+#     return path
 
 
 class Usuario(User):
