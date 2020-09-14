@@ -1,0 +1,20 @@
+{% extends 'cuentas/base.html' %}
+
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- {{ form.as_p }} -->
+    {{ form.username.label_tag }}
+    {{ form.username }}
+    {{ form.password1.label_tag }}
+    {{ form.password1 }}
+    {{ form.password2.label_tag }}
+    {{ form.password2 }}
+    {{ form.email.label_tag }}
+    {{ form.email }}
+    #{{ form.foto.label_tag }}#
+    #{{ form.foto }}#
+    <input type="submit" value="Registrarme">
+</form>
+<p>Ya tengo una cuenta: <a href="{% url 'login' %}">Iniciar Sesión</a></p>
+{% endblock %}

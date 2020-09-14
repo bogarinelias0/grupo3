@@ -1,0 +1,30 @@
+{% extends "cuentas/base.html" %}
+
+{% block content %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Usted ha iniciado sesión como {{ user.username }}</p>
+    <p>Su cuenta no posee acceso a esta página. Por favor, inicie sessión con una cuenta que tenga los permisos necesarios.</p>
+    {% else %}
+    <p>Por favor, inicie sesión para ver esta página.</p>
+    {% endif %}
+{% endif %}
+
+{% if form.errors %}
+    <p>Introduzca un usuario y una contraseña válidos</p>
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+{{ form.as_p }}
+
+<input type="submit" value="login">
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+
+{# Debe haberse configurado las urls para el registro y el reseteo de contraseñas #}
+<p><a href="{% url 'registrar' %}">Registrarme</a></p>
+<p><a href="{% url 'password_reset' %}">Olvidé la contraseña</a></p>
+
+{% endblock %}

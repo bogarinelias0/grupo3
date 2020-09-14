@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home',
+    'cuentas',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Mis configuraciones
+LOGIN_REDIRECT_URL = 'home'  # a donde me redirigirá ante login exitoso
+LOGOUT_REDIRECT_URL = 'home' # a donde me redirigirá ante un logout
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -6,7 +6,11 @@
     <!-- Nav izquierda -->
     <ul class="nav-menu">
       <li>
+        {% if user.is_anonymous %}
         <a href="{% url 'login' %}">Ingresa</a>
+        {% else %}
+        <a href="{% url 'logout' %}">Cerrar Sesión</a>
+        {% endif %}
       </li>
       <li>
         <a href="#">Contactenos</a>
