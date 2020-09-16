@@ -6,61 +6,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{% endblock %}</title>
-  <link rel=”icon” type=”image/png” href="{% static 'img/canvas.png' %}"/>
+  <link rel="icon" type="{% static 'image/png' %}" href="{% static '/img/canvas.png' %}"/>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <!-- FUENTES Oswald -->
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <!-- CUSTOM CSS -->
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <script src=https://code.jquery.com/jquery-3.5.1.min.js></script>
+		<script>
+			$(function(){
+		    $('#login').click(function(){
+			    $(this).next('#login-content').slideToggle();
+			    $(this).toggleClass('active');          
+			  });
+			});
+		</script>
 </head>
 
 <body>
+  {% block content %}
+  {% endblock %}
 
-  <div class="menu-btn">
-    <i class="fas fa-bars fa-2x"></i>
-  </div>
-
-  <div class="container">
-    <!-- Navegación -->
-    {% include 'navbar.html' %}
-
-    <hr>
-
-    <!-- SHOWCASE -->
-    {% include 'header.html' %}
-
-    <!-- Cartas -->
-  
-    {% block content %}
-    {% endblock %}
-
-
-    <!-- Redes Sociales -->
-    <section class="social">
-      <p>A TU CASA</p>
-      <div class="links">
-        <a href="https://facebook.com">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://twitter.com">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://linkdin.com">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-    </section>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <h3>A TU CASA Copyright</h3>
-  </footer>
-
-  <!-- Scroll Reveal -->
-  <script src="https://unpkg.com/scrollreveal"></script>
-  <script src="{% static 'js/main.js' %}"></script>
+  {% block footer %}
+  {% endblock %}
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 
+
 from .models import Domicilio, Usuario
 # Register your models here.
 
