@@ -66,6 +66,7 @@ TEMPLATES = [
         },
     },
 ]
+# 'DIRS': ['proyecto_aDomicilio\proyecto_aDomicilio\plantillas'], 
 
 WSGI_APPLICATION = 'proyecto_aDomicilio.wsgi.application'
 
@@ -80,6 +81,18 @@ DATABASES = {
     }
 }
 
+"""
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'nombreDB',
+            'USER': 'nombreusuario',
+            'PASSWORD': 'pass',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
+}
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
