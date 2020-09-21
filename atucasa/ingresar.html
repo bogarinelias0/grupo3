@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  		<title>A tu casa</title>
+  		<link rel=”icon” type=”image/png” href=”/img/canvas.png”/>
+  		<!-- FUENTES Oswald -->
+  		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
+  		<!-- Font Awesome -->
+  		<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">  
+		  <!-- CUSTOM CSS -->
+  		<link rel="stylesheet" href="ingresar_styles.css">
+	</head>
+	<body>
+		<div class="menu-btn">
+			<i class="fas fa-bars fa-2x"></i>
+		</div>
+		
+		<div class="container">
+			<!-- Navegación -->
+			<nav class="nav-main">
+			  <!-- Brand -->
+			  <img src="img/canvas.png" alt="Atucasa" class="nav-brand">
+			  <!-- Nav izquierda -->
+			  <ul class="nav-menu">
+			
+					<li><i class="fa fa-users" aria-hidden="true"></i><a href="https://wa.link/0248z6">  Contacto</a></li>
+					<li><i class="fa fa-question-circle" aria-hidden="true"></i><a href="#">  Ayuda</a></li>
+			  </ul>
+		
+			  <!-- Barra navegadora derecha-->
+			  <ul class="nav-menu-right">
+				<li>
+				  <a href="#">
+					<i class="fas fa-search"></i>
+				  </a>
+				</li>
+			  </ul>
+			</nav>
+			<hr>
+			<form action="" method="post" enctype="multipart/form-data">
+				<div class="form-registro">
+					<h1>Bienvenido</h1>
+					<hr>
+					<h2>Datos Personales</h2>
+					<input class="form-registro" type="text" placeholder="Nombre">
+					<input class="form-registro" type="text" placeholder="Apellido">
+					<hr>
+					<h2>Contacto</h2>
+					<input class="form-control" type="text" placeholder="Email" required>
+					<input class="form-control" type="password" placeholder="Password"required>
+					<hr>
+					<h2>Foto de perfil</h2>
+					<input type="file" name="imagen">
+					<input type="submit" class="btn" name="Subir" value="subir">
+				<!--
+					<input class="form-control" type="text" placeholder="Provincia">
+					<input class="form-control" type="text" placeholder="Localidad">
+					<span class="input-group-addon"></span>
+				-->
+					<hr>
+					<button type="button" class="btn">Registrarse</button>
+					<hr>
+					<p class="font-weight-bold text-center text-muted">O inicia sesión con</p>
+					<button type="button" class="btn"><i class="fab fa-google lead mr-2"></i>oogle</button>
+					<button type="button" class="btn"><i class="fab fa-facebook-f lead mr-2"></i>acebook</butto>
+				</div>
+			</form>
+	</body>
+</html>
