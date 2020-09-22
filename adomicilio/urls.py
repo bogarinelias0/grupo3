@@ -22,4 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.home.urls')),
     path('cuentas/', include('apps.cuentas.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    path('categorias/', include('apps.categorias.urls')),
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+# let's keep this, just in case
+# settings.STATIC_URL, document_root=settings.STATIC_ROOT)
