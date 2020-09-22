@@ -15,7 +15,7 @@
                 <a class="dropdown-item" href="#">Cerrajeros</a>
                 <a class="dropdown-item" href="#">Albañilería</a>
                 <a class="dropdown-item" href="#">Estética</a>
-                <a class="dropdown-item" href="#">Otros</a>
+                <a class="dropdown-item" href="{% url 'categoria_lista' %}">Otros</a>
               </div>
         </li>
         <li class="nav-item">
@@ -28,7 +28,13 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'detalles_usuario' request.user.id %}" tabindex="-1" aria-disabled="true">Mi Perfil: {{ request.user.username }}</a>
       </li>
-      {% else %}
+      {# administrar Categorías, chequear permisos #}
+        {% if perms.user.can_add_categoria %}
+        <li class="nav-item"></li>
+        <a class="nav-link" href="{% url 'categoria_administrar' %}">Administrar Categorías</a>
+        </li>
+        {% endif %}
+        {% else %}
         <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}" tabindex="-1" aria-disabled="true">Iniciar Sesión</a>
         </li>

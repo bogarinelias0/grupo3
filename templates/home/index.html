@@ -2,3 +2,21 @@
 
 {% block title %}Inicio{% endblock %}
 
+{% block content %}
+<h1>Categorías</h1>
+<hr>
+
+<div class="row">
+{% for categoria in categorias %}
+<div class="card col-lg-3 col-md-4 col-sm-6" style="width: 18rem;">
+    <img class="card-img-top" src="{{ categoria.foto.url }}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ categoria.nombre.upper }}</h5>
+      <p class="card-text">{{ categoria.descripcion }}</p>
+      <a href="#" class="btn btn-primary">Ir a {{ categoria.nombre.upper }}</a>
+    </div>
+  </div>
+
+{% endfor %}
+</div>
+{% endblock %}
