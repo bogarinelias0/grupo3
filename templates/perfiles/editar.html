@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Usuario {{ user.username }} - Editar{% endblock %}
+
+{% block content %}
+<h1>Editar Perfil y Cuenta: {{ user.username }}</h1>
+<hr>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form|crispy }}
+    {{ perfil_form|crispy }}
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+  </form>
+  <hr>
+
+<script src="js/api.js"></script>
+{% endblock %}

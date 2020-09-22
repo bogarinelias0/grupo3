@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block content %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Usted ha iniciado sesión como {{ user.username }}</p>
+    <p>Su cuenta no posee acceso a esta página. Por favor, inicie sessión con una cuenta que tenga los permisos necesarios.</p>
+    {% else %}
+    <p>Por favor, inicie sesión para ver esta página.</p>
+    {% endif %}
+{% endif %}
+
+{% if form.errors %}
+    <p>Introduzca un usuario y una contraseña válidos</p>
+{% endif %}
+
+{% if user.is_authenticated %}
+<h1 class='center-block'>Sesión ya iniciada</h1>
+<p>Usted ha iniciado sesión como <strong>{{ user.username }}</strong></p>
+{% else %}
+<h1>Iniciar Sesión</h1>
+<hr>
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+{{ form|crispy }}
+
+<input type="submit" class='button btn btn-primary' value="Iniciar Sesión">
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+<hr>
+<!-- {# Debe haberse configurado las urls para el registro y el reseteo de contraseñas #} -->
+<p><a href="{% url 'registrar' %}">Registrarme</a></p>
+<p><a href="{% url 'password_reset' %}">Olvidé la contraseña</a></p>
+{% endif %}
+{% endblock %}
