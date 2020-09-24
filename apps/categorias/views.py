@@ -34,7 +34,7 @@ class CategoriaUpdateView(UpdateView):
         return redirect_to or reverse('categoria_lista')
 
 
-@method_decorator([login_required, permission_required('categorias.can_add_categoria')], name="dispatch")
+@method_decorator([login_required, permission_required('categorias.can_change_categoria')], name="dispatch")
 class CategoriaCrearView(CreateView):
     model = Categoria
     template_name = "categorias/crear_categoria.html"
