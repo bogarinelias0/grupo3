@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('apps.home.urls')),
     path('cuentas/', include('apps.cuentas.urls')),
     path('categorias/', include('apps.categorias.urls')),
+    path('ofertas/', include('apps.ofertas.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 # let's keep this, just in case

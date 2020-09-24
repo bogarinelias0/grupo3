@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'apps.home',
     'apps.cuentas',
     'apps.categorias',
+    'apps.ofertas',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Oferta - Detalles{% endblock %}
+
+{% block content %}
+<h1>Detalles de la Oferta</h1>
+<hr>
+
+<div class="row border-bottom p-3 ">
+    <div class="col">Ofertante:</div>
+    <a href="{% url 'detalles_usuario' object.ofertante.id %}" class="col">{{ object.ofertante }}</a>
+</div>
+<div class="row border-bottom p-3">
+    <div class="col">Título:</div>
+    <div class="col">{{ object.titulo }}</div>
+</div>
+<div class="row border-bottom p-3">
+    <div class="col">Precio: </div>
+    <div class="col">$ {{ object.precio }}</div>
+</div>
+<div class="row border-bottom p-3">
+    <div class="col">Título:</div>
+    <div class="col">{{ object.descripcion }}</div>
+</div>
+{{  object.foto }}
+<br>
+<a href="#" class="btn btn-primary">Contratar</a>
+{% endblock %}
