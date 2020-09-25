@@ -6,6 +6,7 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.conf import settings
 
+from apps.categorias.models import Categoria
 
 # def get_image_path(instancia, filename):
 #     """Construye la ruta donde se van a guardar las imágenes de perfil"""
@@ -79,6 +80,7 @@ class Perfil(models.Model):
     puntuacion = models.DecimalField(null=True, blank=True, max_digits=3, decimal_places=2)
     domicilio = models.ForeignKey(Domicilio, related_name='personas', on_delete=models.PROTECT, null=True, blank=True)
     numero_telefono = models.CharField(max_length=13, null=True, blank=True)
+    categorias = models.ManyToManyField(Categoria, related_name='perfiles')
 
     def __str__(self):
         return self.user.username

@@ -23,4 +23,4 @@ class UserForm(forms.ModelForm):
 class PerfilForm(forms.ModelForm):
     class Meta:
         model = Perfil
-        fields = ("foto", "descripcion", "domicilio", "numero_telefono", )
+        fields = ("foto", "descripcion", "domicilio", "numero_telefono", "categorias")

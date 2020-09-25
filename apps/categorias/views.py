@@ -8,6 +8,7 @@ from django.shortcuts import redirect, reverse
 # Create your views here.
 
 from .models import Categoria
+from django.contrib.auth.models import User
 
 
 class CategoriaListView(ListView):
@@ -73,3 +74,10 @@ def borrar_categoria(request, id):
     except Exception:
         messages.error(request, 'No se pudo borrar la categoría')
     return redirect('categoria_administrar')
+
+
+def en_categoria(request, pk):
+    categoria = Categoria.objects.get(pk=pk)
+    # usuarios = categoria.perfiles
+    contexto = {'categoria': categoria}#, 'usuarios': usuarios}
+    return render(request, 'categorias/en_categoria.html', context=contexto)

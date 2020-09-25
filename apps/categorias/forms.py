@@ -4,7 +4,6 @@ from .models import Categoria
 
 class CategoriaFormForm(forms.ModelForm):
     """Form definition for CategoriaForm."""
-
     class Meta:
         """Meta definition for CategoriaFormform."""
 

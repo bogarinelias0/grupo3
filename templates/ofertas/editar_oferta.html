@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% block title %}Categoría - Editar{% endblock %}
+{% block title %}Oferta - Editar{% endblock %}
 
 {% block content %}
-<h1>Categoría: Editar</h1>
-
+<h1>Editar Oferta</h1>
+<hr>
 <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-    <input type="hidden" name="next" value="{{ next }}" />
 </form>
 <hr>
 {% endblock %}

@@ -14,8 +14,11 @@ def get_image_path(instancia, filename):
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=150)
+    # slug = models.SlugField(max_length=50, unique=True)
     foto = models.ImageField(default="img/categorias/img_defecto/categoria-img.jpg", upload_to=get_image_path, null=True, blank=True)
     descripcion = models.TextField(null=True, blank=True)
+    # prepopulated_fields = {"slug": ("nombre",)}
 
     def __str__(self):
         return self.nombre
+

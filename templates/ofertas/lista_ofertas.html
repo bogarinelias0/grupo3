@@ -4,6 +4,7 @@
 
 {% block content %}
 <h1>Ofertas</h1>
+<a class="btn btn-primary" href="{% url 'ofertas_crear' %}">Crear Oferta</a>
 <hr>
 <div class="row">
 {% for oferta in object_list %}

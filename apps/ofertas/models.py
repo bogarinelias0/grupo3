@@ -10,8 +10,8 @@ from apps.categorias.models import Categoria
 def get_image_path(instancia, filename):
     """Construye la ruta donde se van a guardar las imágenes de perfil"""
     oferta_id = instancia.id
-    # if user_id is None:
-    #     user_id = User.objects.order_by("id").last().id + 1
+    # if oferta_id is None:
+    #     oferta_id = Oferta.objects.order_by("id").last().id
     path = os.path.join("img/ofertas/", str(oferta_id), "oferta", filename)
     return path
 
@@ -21,12 +21,15 @@ class ImagenOferta(models.Model):
     imagen = models.ImageField(default='img/ofertas/por_defecto/oferta-img.jpg', upload_to=get_image_path, null=True, blank=True)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha_subido = models.DateTimeField(auto_now_add=True)
-    oferta = models.ForeignKey('Oferta', on_delete=models.CASCADE)
+    oferta = models.ForeignKey('Oferta', on_delete=models.CASCADE, related_name='imagenes')
 
     class Meta:
         verbose_name = 'Imagen de Oferta'
         verbose_name_plural = 'Imágenes de Oferta'
-    
+
+    def __str__(self):
+        return self.imagen.name
+
 
 class Oferta(models.Model):
     imagen_portada = models.ImageField(default='img/ofertas/por_defecto/oferta-img.jpg', upload_to=get_image_path, null=True, blank=True)
@@ -37,7 +40,7 @@ class Oferta(models.Model):
     categoria = models.ManyToManyField(Categoria, null=True, blank=True, related_name='ofertas')
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
-    imagenes = models.ManyToManyRel(to=ImagenOferta, field='oferta')
+    imagenes = models.ManyToOneRel(field='oferta', to=ImagenOferta, field_name='oferta')
 
     def __str__(self):
         return self.titulo

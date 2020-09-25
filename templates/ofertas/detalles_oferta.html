@@ -22,7 +22,9 @@
     <div class="col">Título:</div>
     <div class="col">{{ object.descripcion }}</div>
 </div>
+{% if object.foto %}
 {{  object.foto }}
+{% endif %}
 <br>
 <a href="#" class="btn btn-primary">Contratar</a>
 {% endblock %}
