@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row"
+            
+        {% for object in object_list %}
+            <div class="col-4">
+        
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ object.thumbnail.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <a href="{{ objet.get_absolute_url }}">
+                        <h5 class="card-title">{{ object.title }}</h5>
+                    </a>
+                        <p class="card-text">{{ object.content|truncatechars:40 }}</p>
+                        <hr/>
+                        <p>
+                        <span><i clas="large material-icons-thumbs_up m1-2"> </i> {{ object.get_like_count }}</span>
+                        <span><i clas="large material-icons-visibility m1-2"> </i> {{ object.get_veiw_count }}</span>
+                        <span><i clas="large material-icons-textsms m1-2"> </i> {{ object.get_coment_count }}</span>
+                        <span><i clas="large material-icons-thumbs_down m1-2"> </i> {{ object.get_dislike_count }}</span>
+                        </p>
+                        <p class="card-text">
+                            posteado {{object.publicacion_date|timesince }} hace
+
+                        </p>
+                    </div>
+                </div>
+            
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+
