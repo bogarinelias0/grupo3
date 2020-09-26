@@ -1,21 +1,22 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.shortcuts import reverse
+from django.conf import settings
 
 class User(AbstractUser):
-    pass
+    # pass
     def __str__(self):
         return self.username
 
 # Create your models here.
 
 class Posteo(models.Model):
-    title = models.CharField(max_length=100),
-    content = models.TextField(),
-    thumbnail = models.ImageField(),
-    publish_date = models.DateTimeField(auto_now_add=True),
-    last_updated = models.DateTimeField(auto_now=True),
-    autor = models.ForeignKey(User, on_delete=models.CASCADE),
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    thumbnail = models.ImageField()
+    publish_date = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
     #slug = models.SlugField(defould='')
     #models.IntegerField()
 
@@ -41,7 +42,7 @@ class Posteo(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    Posteo = models.ForeignKey(Posteo, on_delete=models.CASCADE)
+    posteo = models.ForeignKey(Posteo, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
 
@@ -51,7 +52,7 @@ class Comment(models.Model):
 
 class posteoView(models.Model):
     models.ForeignKey(User, on_delete=models.CASCADE)
-    Posteo = models.ForeignKey(Posteo, on_delete=models.CASCADE)
+    posteo = models.ForeignKey(Posteo, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
     
 
