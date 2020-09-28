@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic import TemplateView
-from apps.categorias.models import Categoria
+from myapps.categorias.models import Categoria
 
 
 class HomeView(TemplateView):

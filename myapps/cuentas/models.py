@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.conf import settings
 
-from apps.categorias.models import Categoria
+from myapps.categorias.models import Categoria
 
 # def get_image_path(instancia, filename):
 #     """Construye la ruta donde se van a guardar las imágenes de perfil"""
