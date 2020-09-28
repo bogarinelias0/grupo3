@@ -7,7 +7,7 @@ from django.utils.decorators import method_decorator
 from .models import Oferta, ImagenOferta
 from .forms import OfertaForm, ImagenFormSet, CrearOfertaFormSet
 from django.forms import inlineformset_factory
-from django.shortcuts import redirect, Http404
+from django.shortcuts import redirect, Http404, reverse
 
 
 class OfertaListView(ListView):
@@ -78,7 +78,7 @@ def postear_oferta(request):
     # author = Author.objects.get(pk=author_id)
     OfertaInlineFormSet = inlineformset_factory(Oferta, ImagenOferta, fields=('imagen',))
     if request.method == "POST":
-        form = OfertaForm(request.POST)
+        form = OfertaForm(request.POST, request.FILES)
         formset = OfertaInlineFormSet(request.POST, request.FILES)
         if form.is_valid() and formset.is_valid():
             oferta = form.save(commit=False)
@@ -90,6 +90,8 @@ def postear_oferta(request):
                 imagen.oferta = oferta
                 imagen.usuario = request.user
                 imagen.save()
+            # guardamos las relaciones de muchos a muchos
+            form.save_m2m()
             return redirect('ofertas')
     else:
         form = OfertaForm()
@@ -99,23 +101,47 @@ def postear_oferta(request):
 
 @login_required
 def editar_oferta(request, id):
-    oferta = Oferta.objects.get(pk=id)
-    OfertaInlineFormSet = inlineformset_factory(Oferta, ImagenOferta, fields=('imagen',))
-    if request.method == "POST":
-        form = OfertaForm(request.POST, instance=request.user)
-        formset = OfertaInlineFormSet(request.POST, request.FILES, instance=oferta)
-        if form.is_valid() and formset.is_valid():
-            oferta = form.save(commit=False)
-            # oferta.ofertante = request.user
-            oferta.save()
-            imagenes = formset.save(commit=False)
-            for imagen in imagenes:
-                # asignamos oferta y usuario a la imagen
-                imagen.oferta = oferta
-                # imagen.usuario = request.user
-                imagen.save()
-            return redirect('ofertas')
+    if request.user.id == Oferta.objects.get(pk=id).ofertante.id:
+        oferta = Oferta.objects.get(pk=id)
+        OfertaInlineFormSet = inlineformset_factory(Oferta, ImagenOferta, fields=('imagen',))
+        if request.method == "POST":
+            form = OfertaForm(request.POST, request.FILES, instance=oferta)
+            formset = OfertaInlineFormSet(request.POST, request.FILES, instance=oferta)
+            if form.is_valid() and formset.is_valid():
+                # form.save_m2m()
+                oferta = form.save(commit=False)
+                # oferta.ofertante = request.user
+                # oferta.save_m2m()
+                oferta.save()
+                # oferta.
+                imagenes = formset.save(commit=False)
+                # formset.save()
+                for imagen in imagenes:
+                    #asignamos oferta y usuario a la imagen
+                    # imagen.oferta = oferta
+                    if not imagen.imagen:
+                        imagen.delete()
+                    # imagen.usuario = request.user
+                    imagen.save()
+                # guardamos las relaciones de muchos a muchos
+                form.save_m2m()
+                return redirect('ofertas')
+        else:
+            form = OfertaForm(instance=oferta)
+            formset = OfertaInlineFormSet(instance=oferta)
+        return render(request, 'ofertas/editar_oferta.html', {'form': form, 'formset': formset})
     else:
-        form = OfertaForm(instance=request.user)
-        formset = OfertaInlineFormSet(instance=oferta)
-    return render(request, 'ofertas/crear_oferta.html', {'form': form, 'formset': formset})
+        return render(request, 'no_permitido.html', {'atras': reverse('ofertas')})
+
+
+@login_required
+def eliminar_oferta(request, id):
+    if request.user.id == Oferta.objects.get(pk=id).ofertante.id:
+        try:
+            oferta = Oferta.objects.get(pk=id)
+            oferta.delete()
+            return redirect('ofertas')
+        except Exception:
+            return render(request, 'no_realizado.html', {'atras': reverse('ofertas')})
+    else:
+        return render(request, 'no_permitido.html', {'atras': reverse('ofertas')})

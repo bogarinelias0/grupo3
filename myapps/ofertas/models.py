@@ -19,7 +19,7 @@ def get_image_path(instancia, filename):
 class ImagenOferta(models.Model):
     """Imágenes para las ofertas"""
     imagen = models.ImageField(default='img/ofertas/por_defecto/oferta-img.jpg', upload_to=get_image_path, null=True, blank=True)
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     fecha_subido = models.DateTimeField(auto_now_add=True)
     oferta = models.ForeignKey('Oferta', on_delete=models.CASCADE, related_name='imagenes')
 
@@ -37,10 +37,10 @@ class Oferta(models.Model):
     titulo = models.CharField(max_length=150)
     descripcion = models.TextField(default="Sin descripción", null=True, blank=True)
     precio = models.IntegerField(null=True, blank=True)
-    categoria = models.ManyToManyField(Categoria, null=True, blank=True, related_name='ofertas')
+    categorias = models.ManyToManyField(Categoria, related_name="ofertas", blank=True)
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
-    # imagenes = models.ManyToOneRel(field='oferta', to=ImagenOferta, field_name='oferta')
+    imagenes = models.ManyToOneRel(field='oferta', to=ImagenOferta, field_name='oferta')
 
     def __str__(self):
         return self.titulo
