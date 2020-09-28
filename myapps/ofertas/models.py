@@ -40,7 +40,7 @@ class Oferta(models.Model):
     categoria = models.ManyToManyField(Categoria, null=True, blank=True, related_name='ofertas')
     creado = models.DateTimeField(auto_now_add=True)
     actualizado = models.DateTimeField(auto_now=True)
-    imagenes = models.ManyToOneRel(field='oferta', to=ImagenOferta, field_name='oferta')
+    # imagenes = models.ManyToOneRel(field='oferta', to=ImagenOferta, field_name='oferta')
 
     def __str__(self):
         return self.titulo

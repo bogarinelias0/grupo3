@@ -27,13 +27,13 @@ class OfertaCreateView(CreateView):
     # def get(self):
     #     context['imagen_formset'] = ImagenFormSet(self.request.POST, self.request.FILES)
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(OfertaCreateView, self).get_context_data(**kwargs)
-    #     if self.request.POST:
-    #         context['formset'] = CrearOfertaFormSet(self.request.POST, self.request.FILES)
-    #     else:
-    #         context['formset'] = CrearOfertaFormSet()
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super(OfertaCreateView, self).get_context_data(**kwargs)
+        if self.request.POST:
+            context['formset'] = CrearOfertaFormSet(self.request.POST, self.request.FILES)
+        else:
+            context['formset'] = CrearOfertaFormSet()
+        return context
 
     def form_valid(self, form):
         """Para poner al usuario que crea el objecto como el ofertante."""
@@ -41,6 +41,15 @@ class OfertaCreateView(CreateView):
         self.object.ofertante = self.request.user
         self.object.save()
         return super(OfertaCreateView, self).form_valid(form)
+
+    def formset_valid(self, formset):
+        for form in formset:
+            self.object.imagen = form.save(commit=False)
+            self.object.usuario = self.request.user
+        # self.object.ofertante = self.request.user
+        self.object.save()
+        return super(CrearOfertaFormSet, self).form_valid(formset)
+            
 
 
 @method_decorator([login_required], name='dispatch')
