@@ -54,10 +54,10 @@
     {% if request.user.id == oferta.ofertante.id %}
     <a href="{% url 'ofertas_editar' oferta.id %}" class="btn btn-primary">Editar Oferta</a>
     {% else %}
-    <a href="#" class="btn btn-primary">Contratar</a>
+    <a href="{% url 'contratar' oferta.id %}" class="btn btn-primary">Contratar</a>
     {% endif %}
 {% else %}
-<a href="#" class="btn btn-primary">Contratar</a>
+<a href="{% url 'contratar' oferta.id %}" class="btn btn-primary">Contratar</a>
 {% endif %}
 
 
