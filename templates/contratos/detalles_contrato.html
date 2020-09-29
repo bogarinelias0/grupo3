@@ -7,32 +7,37 @@
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Contrato</th>
+        <th scope="col">Campo</th>
+        <th scope="col">Dato</th>
       </tr>
     </thead>
     <tbody>
-        {% for field in object.get_fields %}
       <tr>
-        <th scope="row">1</th>
-        <td>{{ field }}</td>
-        <!-- <td>Otto</td>
-        <td>@mdo</td> -->
+        <th scope="row">Id:</th>
+        <td>{{ object.id }}</td>
       </tr>
-      {% endfor %}
-      <!-- <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <!-- <td>Thornton</td>
-        <td>@fat</td> -->
-      <!-- </tr>
       <tr>
-        <th scope="row">3</th>
-        <td>Larry</td> -->
-        <!-- <td>the Bird</td>
-        <td>@twitter</td> -->
-      <!-- </tr> -->
+        <th scope="row">Estado:</th>
+        <td>{{ object.estado.title }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Contratante:</th>
+        <td>{{ object.contratante }} (Usted)</td>
+      </tr>
+      <tr>
+        <th scope="row">Contratado:</th>
+        <td>{{ object.contratado }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Precio:</th>
+        <td>{{ object.oferta.precio }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Fecha:</th>
+        <td>{{ object.fecha_creacion }}</td>
+      </tr>
     </tbody>
   </table>
-{{ object }}
+  <a href="#" class="btn btn-success">Confirmar Contrato</a>
+  <a href="#" class="btn btn-danger">Cancelar</a>
 {% endblock %}
