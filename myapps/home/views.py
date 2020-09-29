@@ -14,8 +14,6 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         categorias = Categoria.objects.all()
         context['categorias'] = categorias
-        # 
-        # print(context)
         return context
 
 def get_categorias_for_menu(request):
