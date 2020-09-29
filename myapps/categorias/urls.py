@@ -10,4 +10,5 @@ urlpatterns = [
     path("editar/<int:pk>", views.CategoriaUpdateView.as_view(), name='categoria_editar'),
     path("administrar/", views.administrar_categorias, name='categoria_administrar'),
     path("<int:pk>", views.en_categoria, name="en_categoria"),
+    path("buscar/", views.buscar, name='buscar',)
 ]

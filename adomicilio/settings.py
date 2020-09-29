@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'myapps.cuentas',
     'myapps.categorias',
     'myapps.ofertas',
+    'myapps.buscar',
+   # 'myapps.resultados'
 ]
 
 MIDDLEWARE = [

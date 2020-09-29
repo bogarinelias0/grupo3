@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from myapps.buscar import views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +25,8 @@ urlpatterns = [
     path('cuentas/', include('myapps.cuentas.urls')),
     path('categorias/', include('myapps.categorias.urls')),
     path('ofertas/', include('myapps.ofertas.urls')),
+    path("search/", views.buscar, name = "search_oferta")
+
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 # let's keep this, just in case
