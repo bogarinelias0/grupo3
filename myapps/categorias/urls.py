@@ -9,6 +9,6 @@ urlpatterns = [
     path("borrar/<int:id>", views.borrar_categoria, name='categoria_borrar'),
     path("editar/<int:pk>", views.CategoriaUpdateView.as_view(), name='categoria_editar'),
     path("administrar/", views.administrar_categorias, name='categoria_administrar'),
-    path("<int:pk>", views.en_categoria, name="en_categoria"),
-    path("buscar/", views.buscar, name='buscar',)
+    path("<int:pk>/", views.en_categoria, name="en_categoria"),
+    path("<str:nombre>/", views.en_categoria, name="en_categoria"),
 ]

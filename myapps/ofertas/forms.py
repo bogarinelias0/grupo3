@@ -16,6 +16,11 @@ class OfertaForm(forms.ModelForm):
         # fields = '__all__'
         exclude = ('ofertante',)
 
+    # def save(self):
+    #     self.save_m2m()
+    #     self.save()
+
+
 class ImagenOfertaForm(forms.ModelForm):
     class Meta:
         model = ImagenOferta

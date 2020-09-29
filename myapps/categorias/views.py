@@ -76,8 +76,12 @@ def borrar_categoria(request, id):
     return redirect('categoria_administrar')
 
 
-def en_categoria(request, pk):
-    categoria = Categoria.objects.get(pk=pk)
+def en_categoria(request, pk=None, nombre=None):
+    if nombre is None:
+        categoria = Categoria.objects.get(pk=pk)
+    else:
+        categoria = Categoria.objects.get(nombre=nombre.title())
     # usuarios = categoria.perfiles
+    print(categoria)
     contexto = {'categoria': categoria}#, 'usuarios': usuarios}
     return render(request, 'categorias/en_categoria.html', context=contexto)

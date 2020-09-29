@@ -11,11 +11,11 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorías</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Pintores</a>
-                <a class="dropdown-item" href="#">Cerrajeros</a>
-                <a class="dropdown-item" href="#">Albañilería</a>
-                <a class="dropdown-item" href="#">Estética</a>
-                <a class="dropdown-item" href="{% url 'categoria_lista' %}">Otros</a>
+                <a class="dropdown-item" href="{% url 'en_categoria' 5 %}">Albañilería</a>
+                <a class="dropdown-item" href="{% url 'en_categoria' 2 %}">Jardinería</a>
+                <a class="dropdown-item" href="{% url 'en_categoria' 1 %}">Peluquería</a>
+                <!-- <a class="dropdown-item" href="#">Estética</a> -->
+                <a class="dropdown-item" href="{% url 'categoria_lista' %}">Todas las categorías</a>
               </div>
         </li>
         <li class="nav-item">
@@ -46,8 +46,8 @@
           <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Sobre Nosotros</a>
       </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0" action="{% url 'search_oferta'%}">
-        <input name="titulo" class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" value = "{{request.GET.buscar}}">
+      <form class="form-inline my-2 my-lg-0" action="{% url 'buscar' %}">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" name='palabra' value="{{ request.GET.buscar }}">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
       </form>
     </div>
