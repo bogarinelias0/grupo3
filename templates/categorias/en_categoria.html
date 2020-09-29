@@ -8,7 +8,7 @@
 
 <div class="row">
 {% for perfil in categoria.perfiles.all %}
-<div class="card col-lg-3 col-md-4 col-sm-6" style="width: 18rem;">
+  <div class="card col-lg-3 col-md-4 col-sm-6" style="width: 18rem;">
     <img class="card-img-top" src="{% if perfil.foto %}{{ perfil.foto.url }}{% endif %}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{ perfil.user.username }}</h5>
@@ -16,6 +16,8 @@
       <a href="{% url 'detalles_usuario' perfil.id %}" class="btn btn-primary">Ver Perfil</a>
     </div>
   </div>
+{% empty %}
+  <h3>No hay perfiles en esta categoría</h3>
 {% endfor %}
 </div>
 {% endblock %}

@@ -16,7 +16,8 @@
       <a href="{% url 'en_categoria' categoria.id %}" class="btn btn-primary">Ir a {{ categoria.nombre.upper }}</a>
     </div>
   </div>
-
+{% empty %}
+  <h3>No hay categorías</h3>
 {% endfor %}
 </div>
 {% endblock %}

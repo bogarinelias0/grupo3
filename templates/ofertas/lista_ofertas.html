@@ -20,6 +20,9 @@
       <a href="{% url 'oferta_detalles' oferta.id %}" class="btn btn-primary">Ver Oferta</a>
     </div>
   </div>
+  {% empty %}
+  <h2>No se encontraron ofertas en esta categoría</h2>
 {% endfor %}
+
 </div>
 {% endblock %}
