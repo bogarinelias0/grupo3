@@ -24,6 +24,8 @@ urlpatterns = [
     path('cuentas/', include('myapps.cuentas.urls')),
     path('categorias/', include('myapps.categorias.urls')),
     path('ofertas/', include('myapps.ofertas.urls')),
+    path('contratos/', include('myapps.contratos.urls')),
+    path('buscar/', include('myapps.buscar.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 # let's keep this, just in case

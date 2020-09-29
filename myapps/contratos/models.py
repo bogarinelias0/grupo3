@@ -29,7 +29,7 @@ class Contrato(models.Model):
     estado = models.CharField(default=CHOICES[0][0], choices=CHOICES, max_length=15)
     detalles = models.TextField(null=True, blank=True)
     fecha_cierre = models.DateTimeField(null=True, blank=True)
-    precio = models.IntegerField(null=True)
+    precio = models.IntegerField(null=True, blank=True)
     categorias = models.ManyToManyField(Categoria, blank=True)
     puntaje = models.IntegerField(choices=PUNTAJES, default=None, null=True, blank=True)
 
