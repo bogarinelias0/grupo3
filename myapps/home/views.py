@@ -14,4 +14,13 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data(**kwargs)
         categorias = Categoria.objects.all()
         context['categorias'] = categorias
+        # 
+        # print(context)
         return context
+
+def get_categorias_for_menu(request):
+    # un procesador de contexto, en settings > templates se añade esta función,
+    # para añadir las categorías a al navbar, este contexto se añade en cada pagina del sitio
+    categorias = Categoria.objects.all()[:5]
+    context = {'categorias_menu': categorias}
+    return context
