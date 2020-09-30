@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Categoría - Administrar{% endblock %}
+
+
+{% block content %}
+<h1>Categorías: Administrar</h1>
+<!-- <hr> -->
+
+{% if messages %}
+<div class="border-top">
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<div class="container border-top">
+    <div class="border-bottom">
+        <a href="{% url 'categoria_crear' %}?next={% url 'categoria_administrar' %}" class="btn btn-success btn-circle ml-auto col-1 m-3">Agregar</a>
+    </div>
+    {% for categoria in categorias %}
+    <div class="row border-bottom">
+        <div class="col m-3">
+            <p>{{ categoria.nombre.upper }}</p>
+        </div>
+        <a class="btn btn-warning ml-auto col-1 m-3" href="{% url 'categoria_editar' categoria.id %}?next={% url 'categoria_administrar' %}" role="button">Editar</a>
+        <a class="btn btn-danger ml-auto m-3 col-1" href="{% url 'categoria_borrar' categoria.id %}" role="button">Borrar</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h1>Categorías</h1>
+<hr>
+
+<div class="row">
+{% for categoria in categorias %}
+<div class="card col-lg-3 col-md-4 col-sm-6" style="width: 18rem;">
+    <img class="card-img-top" src="{% if categoria.foto %}{{ categoria.foto.url }}{% endif %}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ categoria.nombre.upper }}</h5>
+      <p class="card-text">{{ categoria.descripcion }}</p>
+      <a href="{% url 'en_categoria' categoria.id %}" class="btn btn-primary">Ir a {{ categoria.nombre.upper }}</a>
+    </div>
+  </div>
+
+{% endfor %}
+</div>
+{% endblock %}

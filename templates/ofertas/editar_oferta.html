@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Oferta - Editar{% endblock %}
+
+{% block content %}
+<h1>Editar Oferta</h1>
+<hr>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    {{ formset.management_form }}
+    {% for form in formset %}
+    {{ form|crispy }}
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+</form>
+<hr>
+{% endblock %}
