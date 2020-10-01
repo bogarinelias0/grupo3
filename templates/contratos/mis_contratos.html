@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Contratos Recibidos
+{% endblock title %}
+
+{% block content %}
+<h1>Mis Contrato</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Enviado/Recibido</th>
+        <th scope="col">Contratante</th>
+        <th scope="col">Contratado</th>
+        <th scope="col">Estado</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for contrato in contratos %}
+        <tr>
+            <th scope="row">{{ contrato.id }}</th>
+            <td>{% if contrato.contratante.id == request.user.id %}Enviado{% else %}Recibido{% endif %}</th>
+            <td>{{ contrato.contratante }}</td>
+            <td>{{ contrato.contratado }}</td>
+            <td>{{ contrato.estado }}</td>
+            <td><a href="{% url 'contratos_detalles' contrato.id %}" class="btn btn-primary">Ver Detalles</a></td>
+          </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

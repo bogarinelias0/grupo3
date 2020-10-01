@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Solicitud - Detalles
+{% endblock title %}
+    
+
+{% block content %}
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Contrato - Detalles{% endblock %}
+
+{% block content %}
+<h1>Detalles del Contrato</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Campo</th>
+        <th scope="col">Dato</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Id:</th>
+        <td>{{ object.id }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Título:</th>
+        <td>{{ object.titulo }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Descripcion:</th>
+        <td>{{ object.descripcion }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Solicitante:</th>
+        <td>{{ object.user }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <a href="{% url 'detalles_perfil' object.user.id %}" class="btn btn-success">Contactar</a>
+
+{% endblock content %}
