@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Detalles Post{% endblock %}
+
+{% block content %}
+<h1>Detalles Post</h1>
+
+<hr>
+
+<div class="row border-bottom p-3 ">
+    <div class="col">Solicitantes:</div>
+    <a href="{% url 'detalles_usuario' object.autor.id %}" class="col">{{ object.autor }}</a>
+</div>
+<div class="row border-bottom p-3">
+    <div class="col">Título:</div>
+    <div class="col">{{ object.titulo }}</div>
+</div>
+
+<div class="row border-bottom p-3">
+    <div class="col">Descripción:</div>
+    <div class="col">{{ object.descripcion }}</div>
+</div>
+
+<br>
+{% if request.user.is_authenticated %}
+    {% if request.user.id == object.autor.id %}
+    <a href="{% url 'solicitud_editar' object.id %}" class="btn btn-primary">Editar Solicitud</a>
+    {% else %}
+    <a href="{% url 'ver_perfil' object.id %}" class="btn btn-primary">Ver Perfil</a>
+    {% endif %}
+{% else %}
+<a href="{% url 'ver_perfil' object.id %}" class="btn btn-primary">Ver Perfil</a>
+{% endif %}
+
+
+<hr>
+
+{% endblock %}
+
+
+
+

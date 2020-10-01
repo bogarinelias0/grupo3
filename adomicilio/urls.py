@@ -27,6 +27,7 @@ urlpatterns = [
     path('ofertas/', include('myapps.ofertas.urls')),
     path('contratos/', include('myapps.contratos.urls')),
     path('buscar/', include('myapps.buscar.urls')),
+    path('buscar_trabajadores/', include('myapps.trabajadores.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 # let's keep this, just in case

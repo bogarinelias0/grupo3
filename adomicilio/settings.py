@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'myapps.ofertas',
     'myapps.contratos',
     'myapps.buscar',
+    'myapps.trabajadores'
 ]
 
 MIDDLEWARE = [
