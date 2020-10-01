@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Usuario {{ user.username }} - Detalles{% endblock %}
+
+{% block content %}
+<h1>Detalles del Perfil</h1>
+{% if request.user.is_authenticated %}
+{% if request.user.id == object.pk %}
+<a class="btn btn-secondary btn-outline" href="{% url 'editar_perfil' %}">Editar</a>
+{% endif %}
+{% endif %}
+<hr>
+{% if messages %}
+<div class="border-top">
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+<hr>
+{% endif %}
+<div class="col-6">
+    <div class="row"><p class="col">Usuario: </p><span class="col">{{ object.username }}</span>
+    </div>
+    <hr>
+    <div class="row">
+    <p class="col">Nombre: </p><span class="col">{{ object.first_name }}</span>
+    </div>
+    <hr>
+    <div class="row">
+    <p class="col">Apellido: </p><span class="col">{{ object.last_name }}</span>
+    </div>
+    <hr>
+    <div class="row">
+    <p class="col">Foto de Perfil: </p>
+    {% if object.perfil.foto %}
+    <img src="{{ object.perfil.foto.url }}" alt="Foto de Perfil" srcset="" class="col-sm-6 col-md-2 col-lg-2 img-thumbnail">
+    {% else %}
+    <p>Sin foto de Perfil</p>
+    {% endif %}
+    
+    </div>
+    <hr>
+    <div class="row">
+    <p class="col">Dirección: </p><span class="col">{{ object.perfil.domicilio.calle}} {{ object.perfil.domicilio.numero_calle }}</span>
+    
+    </div>
+    <hr>
+    <div class="row">
+    <p class="col">Provincia: </p><span class="col">{{ object.perfil.domicilio.localidad.provincia }}</span>
+    
+    </div>
+    <hr>
+    <div class="row">
+    <p class="col">Localidad: </p><span class="col">{{ object.perfil.domicilio.localidad }}</span>
+    
+    </div>
+    <hr>
+    <div class="row">
+    <p class="col">Descripción: </p><span class="col">{{ object.perfil.descripcion }}</span>
+    
+    </div>
+    <hr>
+    <div class="row">
+    <p class="col">Email: </p><span class="col">{{ object.email }}</span>
+    
+    </div>
+    <hr>
+</div>
+<script src="{% static 'js/api.js' %}"></script>
+{% endblock %}

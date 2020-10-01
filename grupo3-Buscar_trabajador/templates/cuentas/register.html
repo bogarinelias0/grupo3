@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Registrarme{% endblock %}
+
+{% block content %}
+
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <!-- <form action="" method="post" enctype="multipart/form-data"> -->
+        <div class="form-registro">
+            <h1>Registro</h1>
+            <hr>
+            <!-- <h2>Datos Personales</h2>
+            <input class="form-registro" type="text" placeholder="Nombre">
+            <input class="form-registro" type="text" placeholder="Apellido">
+            <hr> -->
+            <h2>Datos</h2>
+            {{ form|crispy }}
+            <!-- {{ form.username.label_tag }}
+            {{ form.username }} -->
+            <!-- <hr> -->
+            <!-- {{ form.email.label_tag }}
+            {{ form.email }} -->
+            <!-- <hr> -->
+            <!-- {{ form.password1.label_tag }}
+            {{ form.password1 }} -->
+            <!-- <hr> -->
+            <!-- {{ form.password2.label_tag }} -->
+            <!-- {{ form.password2 }} -->
+
+            <!-- <input class="form-control" type="text" placeholder="Email" required>
+            <input class="form-control" type="password" placeholder="Password"required> -->
+            <!-- <hr> -->
+            <!-- <h2>Foto de perfil</h2>
+            <input type="file" name="imagen"> -->
+            <!-- <input type="submit" class="btn" name="Subir" value="subir"> -->
+        <!--
+            <input class="form-control" type="text" placeholder="Provincia">
+            <input class="form-control" type="text" placeholder="Localidad">
+            <span class="input-group-addon"></span>
+        -->
+            <hr>
+            <button type="submit" class="btn btn-primary">Registrarme</button>
+            <hr>
+            <p class="font-weight-bold text-center text-muted">O inicia sesión con</p>
+            <button type="button" class="btn"><i class="fab fa-google lead mr-2"></i>Google</button>
+            <button type="button" class="btn"><i class="fab fa-facebook-f lead mr-2 btn-foursquare"></i>Facebook</butto>
+        </div>
+    <!-- </form> -->
+
+    <!-- {{ form.as_p }} -->
+
+    <!-- <input type="submit" value="Registrarme"> -->
+</form>
+<p>Ya tengo una cuenta: <a href="{% url 'login' %}">Iniciar Sesión</a></p>
+{% endblock %}
+
+
+			
+

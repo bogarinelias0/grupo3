@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<style>
+    body {
+        margin: auto;
+        background: grey !important;
+    }
+    
+    #Terminos {
+        width: 700px;
+        height: 500px;
+        background: -webkit-repeating-linear-gradient(#c76464, #6b2828);
+        display: none;
+    }
+    
+    #Terminos:target {
+        display: block;
+    }
+    
+    #asection {
+        display: inline-block;
+    }
+</style>
+
+
+<div class="Central">
+    <div style="text-align: center;">
+        <H1 style="font-size: 3vw; letter-spacing: 3px; color: azure;">Acerca de Nosotros.</H1>
+    </div>
+    <div id="text" style="text-align: left;">
+        <h3>
+            Somos un grupo del informatorio, una capacitacion de programacion de chaco, en el cual hicimos y planeamos este proyecto el cual no esta hecho con fines lucrativos, el fin es que, con los sucesos de la pandemia muchas personas las cuales no han podido
+            trabajar ni conseguir dinero para subsistir, puedan publicar sus empleos y gente que necesite trabajador de "x" oficio pueda encontrarlo y solucionar su problema. Por cualquier suceso o problema en cuanto a la pagina, existe el boton de contactanos
+            el cual redirige al whatsapp de nosotros, en el cual podes comentarnos que error te encontraste y intentaremos solucionarlo a la brevedad. <br> No estamos sujetos a cualquier inconveniente fuera de la pagina o con cualquiera de
+            los trabajadores publicados, abstenerse de acciones legales en contra de nosotros, o cualquier integrante, <a href="#Terminos" id="asection" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: antiquewhite;">Leer terminos y condiciones.</a>
+
+        </h3>
+    </div>
+</div>
+<div id="Terminos">
+    <h2 style="font-family: monospace; font-size: 2vw;">
+        Terminos y Condiciones ATuCasa™
+    </h2>
+    <div>
+        <h3>Leer antes de registrarse y/o contratar algun trabajador o ofertar.</h3>
+        <div style="text-align: center;">
+            Si usted acepta estos terminos y condiciones los creadores de esta pagina quedan exentos de cualquier problema legal, o arreglar lo sucedido cliente/ofertante. <br> La pagina esta hecha para ayudar a conseguir trabajos y lograr conectar a
+            gente que emplee, lo cual cualquier problema con el trabajador contratado deberia arreglarlo con el, nosotros somos totalmente ajenos y no podemos intentar solucionar su problema o inconveniente, al igual que del lado del trabajador si ha
+            tenido inconvenientes con un ofertante no podemos brindar ningun tipo de ayuda ante el servicio brindado ya que lo arreglan mediante contactos brindados.
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

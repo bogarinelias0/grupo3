@@ -1,0 +1,24 @@
+body {
+    width: 700px;
+    margin: auto;
+    background: grey;
+}
+
+#text {
+    background: #791c0b;
+}
+
+#Terminos {
+    width: 700px;
+    height: 500px;
+    background: -webkit-repeating-linear-gradient(#c76464, #6b2828);
+    display: none;
+}
+
+#Terminos:target {
+    display: block;
+}
+
+#asection {
+    display: inline-block;
+}
