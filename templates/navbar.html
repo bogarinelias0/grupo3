@@ -47,6 +47,13 @@
         <li class="nav-item">
           <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Sobre Nosotros</a>
       </li>
+      
+      {% if request.user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'mis_contratos' %}" tabindex="-1" aria-disabled="true">Contratos</a>
+      </li>
+      {% endif %}
+        
       </ul>
       <form class="form-inline my-2 my-lg-0" action="{% url 'buscar' %}">
         <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" name='palabra' value="{{ request.GET.buscar }}">

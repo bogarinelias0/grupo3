@@ -38,6 +38,30 @@
       </tr>
     </tbody>
   </table>
-  <a href="#" class="btn btn-success">Confirmar Contrato</a>
-  <a href="#" class="btn btn-danger">Cancelar</a>
+  
+  {% if request.user.is_authenticated %}
+  {% if object.estado == 'borrador' %}
+  <a href="{% url 'confirmar_contrato' object.id %}" class="btn btn-success">Confirmar Contrato</a>
+  <a href="{% url 'cancelar_contrato' object.id %}" class="btn btn-danger">Cancelar</a>
+  {% elif object.estado == 'en espera' %}
+    {% if request.user.id == object.contratado.id %}
+    <a href="{% url 'aceptar_contrato' object.id %}" class="btn btn-success">Aceptar</a>
+    <a href="{% url 'cancelar_contrato' object.id %}" class="btn btn-danger">Rechazar</a>
+    {% endif %}
+    {% if request.user.id == object.contratante.id %}
+    <a href="{% url 'cancelar_contrato' object.id %}" class="btn btn-danger">Cancelar</a>
+    {% endif %}
+  {% elif object.estado == 'aceptado' %}
+    {% if request.user.id == object.contratado.id %}
+    <a href="{% url 'finalizar_contrato' object.id %}" class="btn btn-danger">Finalizar</a>
+    {% elif request.user.id == object.contratante.id %}
+    <p>Puntuar</p>
+    {% endif %}
+  {% else %}
+  {% if request.user.id == object.contratante.id %}
+  <p>Puntuar</p>
+  {% endif %}
+  {% endif %}
+  {% endif %}
+  
 {% endblock %}
