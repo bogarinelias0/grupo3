@@ -3,6 +3,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        
         <a class="navbar-brand" href="{% url 'inicio' %}">A Domicilio</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
@@ -18,12 +19,9 @@
                 <a class="dropdown-item" href="{% url 'categoria_lista' %}">Todas las categorías</a>
               </div>
         </li>
-        {% comment %} Sobre nosotros y contactenos {% endcomment %}
-        <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sobre Nosotros</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="nav-link" href="https://api.whatsapp.com/send?phone=5493731444849&text=Hola%20que%20tal%3F%20tengo%20una%20consulta..." tabindex="-1" target="_blank" aria-disabled="true">Contáctenos</a>
-            </div>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'ofertas' %}">Explorar Ofertas </a>
         </li>
 
         <li class="nav-item">
@@ -56,9 +54,14 @@
         </li>
         {% endif %}
 
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'ofertas' %}">Explorar Ofertas </a>
+        {% comment %} Sobre nosotros y contactenos {% endcomment %}
+        <li class="nav-item dropdown">
+            <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sobre Nosotros</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="nav-link" href="https://api.whatsapp.com/send?phone=5493731444849&text=Hola%20que%20tal%3F%20tengo%20una%20consulta..." tabindex="-1" target="_blank" aria-disabled="true">Contáctenos</a>
+            </div>
         </li>
+       
 
       </ul>
       <form class="form-inline my-2 my-lg-0" action="{% url 'buscar' %}">
