@@ -26,13 +26,17 @@
     </div>
     <hr>
     <div class="row">
-    <p class="col">Nombre: </p><span class="col">{{ object.first_name }}</span>
+    <p class="col">Nombre: </p><span class="col">{{ object.first_name|default:'No Proporcionado' }}</span>
     </div>
     <hr>
     <div class="row">
-    <p class="col">Apellido: </p><span class="col">{{ object.last_name }}</span>
+    <p class="col">Apellido: </p><span class="col">{{ object.last_name|default:'No Proporcionado' }}</span>
     </div>
     <hr>
+    <div class="row">
+        <p class="col">Puntaje: </p><span class="col">{{ object.puntaje|default:'Sin Puntaje' }}</span>
+        </div>
+        <hr>
     <div class="row">
     <p class="col">Foto de Perfil: </p>
     {% if object.perfil.foto %}
@@ -49,12 +53,12 @@
     </div>
     <hr>
     <div class="row">
-    <p class="col">Provincia: </p><span class="col">{{ object.perfil.domicilio.localidad.provincia }}</span>
+    <p class="col">Provincia: </p><span class="col">{{ object.perfil.domicilio.localidad.provincia|default:'No Proporcionado' }}</span>
     
     </div>
     <hr>
     <div class="row">
-    <p class="col">Localidad: </p><span class="col">{{ object.perfil.domicilio.localidad }}</span>
+    <p class="col">Localidad: </p><span class="col">{{ object.perfil.domicilio.localidad|default:'No Proporcionado' }}</span>
     
     </div>
     <hr>
@@ -64,7 +68,7 @@
     </div>
     <hr>
     <div class="row">
-    <p class="col">Email: </p><span class="col">{{ object.email }}</span>
+    <p class="col">Email: </p><span class="col">{{ object.email|default:'No Proporcionado' }}</span>
     
     </div>
     <hr>

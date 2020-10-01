@@ -18,11 +18,11 @@
       </tr>
       <tr>
         <th scope="row">Estado:</th>
-        <td>{{ object.estado.title }}</td>
+        <td>{{ object.estado|title }}</td>
       </tr>
       <tr>
         <th scope="row">Contratante:</th>
-        <td>{{ object.contratante }} (Usted)</td>
+        <td>{{ object.contratante }}</td>
       </tr>
       <tr>
         <th scope="row">Contratado:</th>
@@ -36,6 +36,10 @@
         <th scope="row">Fecha:</th>
         <td>{{ object.fecha_creacion }}</td>
       </tr>
+      <tr>
+        <th scope="row">Puntaje:</th>
+        <td>{{ object.puntaje|default:'Sin Puntuar' }}</td>
+      </tr>
     </tbody>
   </table>
   
@@ -46,7 +50,7 @@
   {% elif object.estado == 'en espera' %}
     {% if request.user.id == object.contratado.id %}
     <a href="{% url 'aceptar_contrato' object.id %}" class="btn btn-success">Aceptar</a>
-    <a href="{% url 'cancelar_contrato' object.id %}" class="btn btn-danger">Rechazar</a>
+    <a href="{% url 'rechazar_contrato' object.id %}" class="btn btn-danger">Rechazar</a>
     {% endif %}
     {% if request.user.id == object.contratante.id %}
     <a href="{% url 'cancelar_contrato' object.id %}" class="btn btn-danger">Cancelar</a>
@@ -56,12 +60,20 @@
     <a href="{% url 'finalizar_contrato' object.id %}" class="btn btn-danger">Finalizar</a>
     {% elif request.user.id == object.contratante.id %}
     <p>Puntuar</p>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.puntaje|as_crispy_field }}
+    <button type="submit" class='btn btn-primary'>Puntuar</button>
+    </form>
+    <br>
     {% endif %}
   {% else %}
   {% if request.user.id == object.contratante.id %}
-  <p>Puntuar</p>
-  {% endif %}
-  {% endif %}
-  {% endif %}
+  <!-- <p>Desea Puntuar?</p> -->
   
+  
+  {% endif %}
+  {% endif %}
+  {% endif %}
+    
 {% endblock %}

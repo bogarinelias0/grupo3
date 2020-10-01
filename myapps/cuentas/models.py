@@ -81,10 +81,14 @@ class Perfil(models.Model):
     domicilio = models.ForeignKey(Domicilio, related_name='personas', on_delete=models.PROTECT, null=True, blank=True)
     numero_telefono = models.CharField(max_length=13, null=True, blank=True)
     categorias = models.ManyToManyField(Categoria, related_name='perfiles')
+    
 
     def __str__(self):
         return self.user.username
 
+    def actualizar_puntaje(self):
+        contratos_recibidos = self.user.contratos_recibidos
+        print(contratos_recibidos)
 
 # truquito para crear un perfil si se crea un usuario
 @receiver(post_save, sender=User)

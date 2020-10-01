@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from myapps.buscar import views 
@@ -27,6 +27,8 @@ urlpatterns = [
     path('ofertas/', include('myapps.ofertas.urls')),
     path('contratos/', include('myapps.contratos.urls')),
     path('buscar/', include('myapps.buscar.urls')),
+    # for star_rating
+    # re_path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 # let's keep this, just in case

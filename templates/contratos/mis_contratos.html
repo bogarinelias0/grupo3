@@ -25,7 +25,7 @@ Contratos Recibidos
             <td>{% if contrato.contratante.id == request.user.id %}Enviado{% else %}Recibido{% endif %}</th>
             <td>{{ contrato.contratante }}</td>
             <td>{{ contrato.contratado }}</td>
-            <td>{{ contrato.estado }}</td>
+            <td>{{ contrato.estado|title }}</td>
             <td><a href="{% url 'contratos_detalles' contrato.id %}" class="btn btn-primary">Ver Detalles</a></td>
           </tr>
         {% endfor %}
