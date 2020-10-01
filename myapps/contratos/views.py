@@ -137,7 +137,7 @@ def confirmar_contrato(request, id_contrato):
 @login_required
 def mis_contratos(request):
     """Muestra los contratos que tengo, ya sea como contratante o contratado"""
-    contratos = Contrato.objects.filter(Q(contratado=request.user)|Q(contratante=request.user))
+    contratos = Contrato.objects.filter(Q(contratado=request.user)|Q(contratante=request.user)).exclude(estado='borrador')
     # contratos = Contrato.objects.
     context = {'contratos': contratos}
     return render(request, 'contratos/mis_contratos.html', context=context)

@@ -60,15 +60,17 @@
     <a href="{% url 'finalizar_contrato' object.id %}" class="btn btn-danger">Finalizar</a>
     {% elif request.user.id == object.contratante.id %}
     <p>Puntuar</p>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.puntaje|as_crispy_field }}
+    <button type="submit" class='btn btn-primary'>Puntuar</button>
+    </form>
+    <br>
     {% endif %}
   {% else %}
   {% if request.user.id == object.contratante.id %}
   <!-- <p>Desea Puntuar?</p> -->
-  <form action="" method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-  <button type="submit" class='btn btn-primary'>Puntuar</button>
-  </form>
+  
   
   {% endif %}
   {% endif %}
