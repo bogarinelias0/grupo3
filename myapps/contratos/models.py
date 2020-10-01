@@ -61,9 +61,12 @@ class Contrato(models.Model):
     def __str__(self):
         return str(self.id)
 
-    def puntuar(self, puntaje):
+    def set_puntaje(self, puntaje):
         if puntaje in self.PUNTAJES:
             self.puntaje = puntaje
+
+    def get_punjate(self):
+        return self.puntaje
 
     def confirmar(self):
         self.estado = self.CHOICES[0][0]
