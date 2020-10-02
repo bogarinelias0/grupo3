@@ -1,7 +1,10 @@
 from django.urls import path
 
 from . import views
-
+from django.conf.urls import handler404
+from myapps.contratos.views import mi_error_404
+ 
+handler404 = mi_error_404
 
 urlpatterns = [
     # path('<int:pk>/', views.ContratoDetailView.as_view(), name='contratos_detalles'),

@@ -15,7 +15,12 @@ from django.http import HttpResponseForbidden, Http404
 from .models import Contrato
 from myapps.ofertas.models import Oferta
 from .forms import PuntajeForm
-
+from django.views.defaults import page_not_found
+ 
+def mi_error_404(request,exception):
+    nombre_template = '404.html'
+ 
+    return page_not_found(request, template_name=nombre_template)
 
 @login_required
 def contratar(request, id_oferta=None, id_usuario=None):
